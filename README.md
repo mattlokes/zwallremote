@@ -8,15 +8,47 @@ After booting, the zwallremote polls once a second to detect the state of the sc
 
 # PCB
 
-No known issues, worked first time with my cheap aliexpress CC2530 modules.
+No known issues, worked first time with my cheap aliexpress CC2530 modules. Pretty Simple
 
 # Firmware
-Can use precompiled binary in firmware/bin/
+You can either:
+1. Can use precompiled binary in firmware/bin/
   - Will need to change the address of your co-ordinator (currently 0x0012_4B00_02C5_A0A6)
+    - Line 2053 of the hex file, its reverse byte ordered, see https://imgur.com/1fYdB8f.
   - TODO give script for manipulate the hex file
-Compling yourself:
-  - Will need IAR workbench 8051
-  - TI's Z-Stack Home 1.2.2a.44539
-  - Patience
   
-# Zigbee Shepard Patch
+2. Comple it yourself:
+  - Will need IAR workbench 8051.
+  - TI's Z-Stack Home 1.2.2a.44539.
+  - The files are just modification to the SampleSwitch example application so just replace files as required.
+  - Patience, Prayer and Screaming.
+  
+# Zigbee2mqtt changes
+
+1. You need to add ZWallRemote to "const devices" list of dictionaries in "node_modules/zigbee-shepherd-converters/devices.js":
+
+```python
+const devices = [
+...
+  {
+      zigbeeModel: ['ZWallRemote0'],
+      model: 'ZWallRemote0',
+      vendor: 'Custom devices (DiY)',
+      description: 'Matts Wall Switch Remote (https://github.com/mattlokes/ZWallRemote)'
+      supports: 'on/off',
+      fromZigbee: [ fz.cmdToggle ],
+      toZigbee: [],
+  },
+...
+]
+```
+
+2. Add "ZWallRemote0" to the "const mapping" dictionary in "lib/extension/homeassistant.js"
+
+```python
+const mapping = { 
+ ...
+    'ZWallRemote0': [ configurations.sensor_action ]
+ ...
+ }
+```
