@@ -1,1 +1,48 @@
+The KiCad PCB uses a custom footprint i made for the SZ1v5 CC2530 module from aliexpress:
 
+1. Add the follow footprint to "kicad/library/RF_Module.lib"
+
+```
+# SZ1v5
+#
+DEF SZ1v5 U 0 40 Y Y 1 F N
+F0 "U" 0 -200 50 H V C CNN
+F1 "SZ1v5" 0 150 50 H V C CNN
+F2 "RF_Module:SZ1v5" 0 0 50 H V C CNN
+F3 "" 0 -200 50 H I C CNN
+DRAW
+S 750 -650 -750 625 0 1 10 f
+X GND 1 750 450 100 R 50 50 0 0 W
+X P1_4 10 750 -450 100 R 50 50 0 0 B
+X P1_3 11 750 -550 100 R 50 50 0 0 B
+X P0_1 14 -750 350 100 L 50 50 0 0 B
+X P0_2 15 -750 250 100 L 50 50 0 0 B
+X P0_3 16 -750 150 100 L 50 50 0 0 B
+X P0_4 17 -750 50 100 L 50 50 0 0 B
+X P0_5 18 -750 -50 100 L 50 50 0 0 B
+X P0_6 19 -750 -150 100 L 50 50 0 0 B
+X 3V3 2 750 350 100 R 50 50 0 0 W
+X P0_7 20 -750 -250 100 L 50 50 0 0 B
+X P1_0 21 -750 -350 100 L 50 50 0 0 B
+X P1_1 22 -750 -450 100 L 50 50 0 0 B
+X P1_2 23 -750 -550 100 L 50 50 0 0 B
+X 3V3 3 750 250 100 R 50 50 0 0 W
+X P2_2 4 750 150 100 R 50 50 0 0 B
+X P2_1 5 750 50 100 R 50 50 0 0 B
+X P2_0 6 750 -50 100 R 50 50 0 0 B
+X P1_7 7 750 -150 100 R 50 50 0 0 B
+X P1_6 8 750 -250 100 R 50 50 0 0 B
+X P1_5 9 750 -350 100 R 50 50 0 0 B
+X GND 0 750 550 100 R 50 50 1 1 W
+X RST_N 12 -750 550 100 L 50 50 1 1 I
+X P0_0 13 -750 450 100 L 50 50 1 1 B
+ENDDRAW
+ENDDEF
+```
+2. Add the footprint description to "kicad/library/RF_Module.dcm"
+
+```
+$CMP SZ1v5
+D cc2530 Zigbee Module
+$ENDCMP
+```
