@@ -23,7 +23,7 @@ You can either:
   - The files are just modification to the SampleSwitch example application so just replace files as required.
   - Patience, Prayer and Screaming.
   
-# Zigbee2mqtt changes
+# Zigbee2mqtt changes (Now on mainline zigbee2mqtt)
 
 1. You need to add ZWallRemote to "const devices" list of dictionaries in "node_modules/zigbee-shepherd-converters/devices.js":
 
